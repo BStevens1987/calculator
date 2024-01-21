@@ -85,6 +85,19 @@ function digit(a) {
   }
 };
 
+function calculator(operator) {
+  if (op==='' || num1 === 'e' || num2 === 'e') {
+    op = operator;
+  }
+  else {
+    op = operator;
+    num1 = operate(num1, num2, op);
+    num2 = 'e';
+    disp = num1;
+    display.textContent = disp;
+  }
+};
+
 console.log(disp);
 
 const buttonAC = document.querySelector("#buttonr1c1");
@@ -95,9 +108,15 @@ buttonSign.textContent = '+/-';
 
 const buttonExponent = document.querySelector("#buttonr1c3");
 buttonExponent.textContent = '**';
+buttonExponent.addEventListener('click', () => {
+  calculator('exponent');
+});
 
 const buttonMultiply = document.querySelector("#buttonr1c4");
 buttonMultiply.textContent = '*';
+buttonMultiply.addEventListener('click', () => {
+  calculator('multiply');
+});
 
 const buttonNine = document.querySelector("#buttonr2c1");
 buttonNine.textContent = '9';
@@ -141,16 +160,7 @@ buttonFour.addEventListener('click', () => {
 const buttonAdd= document.querySelector("#buttonr3c4");
 buttonAdd.textContent = '+';
 buttonAdd.addEventListener('click', () => {
-  if (op==='') {
-    op = 'add';
-  }
-  else {
-    op = 'add';
-    num1 = operate(num1, num2, op);
-    num2 = 'e';
-    disp = num1;
-    display.textContent = disp;
-  }
+  calculator('add');
 });
 
 const buttonThree = document.querySelector("#buttonr4c1");
@@ -173,6 +183,9 @@ buttonOne.addEventListener('click', () => {
 
 const buttonSubtract= document.querySelector("#buttonr4c4");
 buttonSubtract.textContent = '-';
+buttonSubtract.addEventListener('click', () => {
+  calculator('subtract');
+});
 
 const buttonZero = document.querySelector("#buttonr5c1");
 buttonZero.textContent = '0';
