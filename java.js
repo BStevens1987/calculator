@@ -85,6 +85,29 @@ function digit(a) {
   }
 };
 
+function decimal() {
+  if (num1 === 'e') {
+    num1 = '0.';
+    disp = '0.';
+    display.textContent = disp;
+  }
+  else if (op === '' && !num1.includes('.')) {
+    num1 = num1 + '.';
+    disp = num1;
+    display.textContent = disp;
+  }
+  else if (num1 != 'e' && op != '' && num2 === 'e'){
+    num2 = '0.';
+    disp = '0.';
+    display.textContent = disp;
+  }
+  else if (num1 != 'e' && op != '' && num2 != 'e' && !num2.includes('.')){
+    num2 = num2 + '.';
+    disp = num2;
+    display.textContent = disp;
+  }
+};
+
 function reset(show) {
   num1 = 'e';
   num2 = 'e';
@@ -210,6 +233,9 @@ buttonZero.addEventListener('click', () => {
 
 const buttonDecimal = document.querySelector("#buttonr5c2");
 buttonDecimal.textContent = '.';
+buttonDecimal.addEventListener('click', () => {
+  decimal();
+});
 
 const buttonPercent = document.querySelector("#buttonr5c3");
 buttonPercent.textContent = '%';
